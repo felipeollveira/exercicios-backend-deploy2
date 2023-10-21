@@ -10,7 +10,7 @@ const cadastrarUsuario = async (req, res) => {
     if (!nome_loja)return res.status(404).json("O campo nome_loja é obrigatório")
 
     try {
-        const { rowCount: quantidadeUsuarios } = await knex('usuarios').where('id', email);
+        const { rowCount: quantidadeUsuarios } = await knex('usuarios').where('email', email);
 
         if (quantidadeUsuarios > 0)return res.status(400).json("O email já existe");
         
